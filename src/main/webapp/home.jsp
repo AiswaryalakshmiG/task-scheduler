@@ -1,29 +1,32 @@
 <%@ page import="com.example.tasks.model.User" %>
-<%@ page session="true" %>
 <%
     User user = (User) session.getAttribute("authUser");
     if (user == null) {
-        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        response.sendRedirect("login.jsp");
         return;
     }
 %>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Home - Task Scheduler</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<title>Home</title>
+<style>
+    body { font-family: Arial; background:#eef; padding:20px; }
+    .top { display:flex; justify-content: space-between; }
+    a.btn { padding:6px 10px; background:#444; color:white; text-decoration:none; }
+</style>
 </head>
 <body>
-<div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3>Welcome, <%= user.getUsername() %></h3>
-    <%-- <form action="<%= request.getContextPath() %>/logout" method="post">
-      <button class="btn btn-outline-secondary">Logout</button>
-    </form> --%>
-  </div>
 
-  <p>Welcome</p>
+<div class="top">
+    <h3>Welcome, <%= user.getUsername() %></h3>
+
+    <a class="btn" href="<%= request.getContextPath() %>/tasks?action=new">Create Task</a>
 </div>
+
+<p>Your task scheduler is ready.</p>
+
+<a href="<%= request.getContextPath() %>/tasks">View Tasks</a>
+
 </body>
 </html>

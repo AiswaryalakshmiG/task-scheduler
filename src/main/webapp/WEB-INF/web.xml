@@ -24,6 +24,16 @@
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>TaskServlet</servlet-name>
+		<servlet-class>com.example.tasks.servlet.TaskServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>TaskServlet</servlet-name>
+		<url-pattern>/tasks</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
